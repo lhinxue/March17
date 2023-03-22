@@ -1,16 +1,13 @@
 import { useEffect } from "react"
 
-function Fonts({ fonts, onLoadComplete }) {
+function Fonts({ fonts = ['ENL', 'ENN', 'ENB', 'CNL', 'CNN', 'CNB'], onLoadComplete }) {
 
-    useEffect(() => {
-        const task = setInterval(() => {
-            if (document.fonts.check('10px ' + fonts.join(', '))) {
-                clearInterval(task)
-            } else {
-                onLoadComplete()
-            }
-        }, 10)
-    }, [])
+    const task = setInterval(() => {
+        if (document.fonts.check('10px ' + fonts.join(', '))) {
+            clearInterval(task)
+            onLoadComplete()
+        }
+    }, 1000)
 
     return (
         <div style={{

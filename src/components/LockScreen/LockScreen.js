@@ -56,10 +56,11 @@ function LockScreen({ open, utility }) {
                 >
                     <Fade delay={300}>
                         <TextField
+                            color='primary'
                             className='Input'
                             focused
                             fullWidth
-                            value={fileName === "" ? "March 7th Drag or Upload File" : fileName}
+                            value={fileName === "" ? "Drag or Upload File" : fileName}
                             variant='outlined'
                             InputProps={{
                                 endAdornment: (
@@ -86,7 +87,7 @@ function LockScreen({ open, utility }) {
                     {
                         fileName === "" ?
                             <Fade delay={300}>
-                                <Typography className="CreateNew" fontSize={12} component="label" color={"primary"}>
+                                <Typography className="CreateNew" fontSize={12} component="label" color='secondary'>
                                     or <u onClick={() => { }}>
                                         Create New
                                     </u>
@@ -121,7 +122,7 @@ function LockScreen({ open, utility }) {
                                         )
                                     }}
                                 />
-                                <IconButton size='small' color='primary'>
+                                <IconButton size='small' color='secondary'>
                                     <ArrowCircleRightOutlined fontSize='small' />
                                 </IconButton>
                             </Fade>

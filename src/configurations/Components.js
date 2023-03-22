@@ -8,22 +8,17 @@ const MenuButtons = [
     },
     {
         key: 'menu-search',
-        color: 'secondary',
+        color: 'orange',
         icon: <TravelExploreOutlined fontSize="small" />
     },
     {
         key: 'menu-allnote',
-        color: 'error',
+        color: 'red',
         icon: <NotesOutlined fontSize="small" />
     },
     {
-        key: 'menu-important',
-        color: 'warning',
-        icon: <DiamondOutlined fontSize="small" />
-    },
-    {
         key: 'menu-untagged',
-        color: 'success',
+        color: 'info',
         icon: <LabelOffOutlined fontSize="small" />
     }
 ]

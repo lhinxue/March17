@@ -31,13 +31,14 @@
     font-size: 20px;
     display: flex;
     align-items: center;
-    font-weight: 600;
+    font-family: ENB, CNB;
 }
 
 .Application>.Header>.Right {
     margin: 0 10px;
 }
-.Application>.Header>.Right button{
+
+.Application>.Header>.Right button {
     margin: 0 2px;
 }
 

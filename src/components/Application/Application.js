@@ -5,7 +5,7 @@ import "./Application.css"
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
 import { MenuButtons } from "../../configurations/Components";
-
+import March7th from './src/img/March7th.jpg'
 
 function Application({
     tags = ["Company", "Study", "Family"],
@@ -32,15 +32,15 @@ function Application({
         >
 
             <div className="Header" style={{
-                borderColor: theme.palette.secondary.light
+                borderColor: theme.palette.primary.light
             }} >
 
-                <Typography component={'div'} className="Left" color={"secondary"}
+                <Typography component={'div'} className="Left" color={"primary"}
                     onClick={() => { }}
                 >
                     <Fade>
-                        <img src="./march7th.jpg" style={{
-                            borderColor: theme.palette.secondary.main
+                        <img src={March7th} alt="" style={{
+                            borderColor: theme.palette.primary.main
                         }} />
                     </Fade>
                     <Flip left cascade>
@@ -49,7 +49,7 @@ function Application({
                 </Typography>
                 <Fade>
                     <div className="Right">
-                        <IconButton size="small" color="secondary">
+                        <IconButton size="small" color="primary">
                             <DownloadingOutlined fontSize="small" sx={{ transform: "scaleX(-1)" }} />
                         </IconButton>
                     </div>
@@ -81,7 +81,7 @@ function Application({
                         orientation="vertical"
                         variant="scrollable"
                         scrollButtons={false}
-                        textColor="primary"
+                        textColor="secondary"
                         value={tagMode(mode)}
                         onChange={(e, v) => setMode("tag-" + v)}
                         sx={{
@@ -89,7 +89,7 @@ function Application({
                                 display: 'none'
                             },
                             "& .Tag.Mui-selected": {
-                                background: theme.palette.primary.light + "11"
+                                background: theme.palette.secondary.light + "11"
                             }
                         }}
                     >
