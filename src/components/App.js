@@ -1,18 +1,18 @@
 
 import { Button, createTheme, ThemeProvider } from '@mui/material';
 import LockScreen from './LockScreen/LockScreen';
-import DINosaur from '../font/DINosaur.otf'
 import Messenger from './Messenger/Messenger';
 import { useState } from 'react';
 import Application from './Application/Application';
-const DINosaurBook = {
-    fontFamily: 'DINosaur', fontWeight: 'normal', src: `url(${DINosaur}) format('otf')`
-}
+import fft from '../fonts/DINosaur-Black.otf'
+import Fonts from './Fonts/Fonts';
+
+
 function App() {
 
     const theme = createTheme({
         typography: {
-            fontFamily: `DINosaur, TsangerXuanSan, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'`
+            fontFamily: `ENN, CNN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'`
         }
     })
 
@@ -22,6 +22,10 @@ function App() {
         title: "",
         text: ""
     })
+
+    const [fontLoaded, setFontLoaded] = useState(false)
+
+
 
     const logMessage = (severity, title, text, duration) => {
         setMessengerControl({
@@ -48,18 +52,24 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             {
-                lockScreen ? <LockScreen utility={{ logMessage, closeMessenger }} /> : <Application />
-            }
+                fontLoaded ?
+                    <>
+                        {
+                            lockScreen ? <LockScreen utility={{ logMessage, closeMessenger }} /> : <Application />
+                        }
 
-            <Messenger
-                open={messengerControl.open}
-                severity={messengerControl.severity}
-                title={messengerControl.title}
-                text={messengerControl.text}
-            />
-            <Button sx={{ zIndex: 100, marginLeft: 90, marginTop: 80 }} onClick={() => {
-                setLockScreen(v => !v)
-            }}>LockScreen Switch</Button>
+                        <Messenger
+                            open={messengerControl.open}
+                            severity={messengerControl.severity}
+                            title={messengerControl.title}
+                            text={messengerControl.text}
+                        />
+                        <Button sx={{ zIndex: 100, marginLeft: 90, marginTop: 80 }} onClick={() => {
+                            setLockScreen(v => !v)
+                        }}>LockScreen Switch</Button>
+                    </> : <div>Loading</div>
+            }
+            <Fonts fonts={['ENL', 'ENN', 'ENB', 'CNL', 'CNN', 'CNB']} onLoadComplete={() => setFontLoaded(true)} />
         </ThemeProvider>
 
     );

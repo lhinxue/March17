@@ -1,26 +1,31 @@
 @font-face {
-    font-family: 'DINosaur';
-    src: url('./fonts/DINosaur.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'ENL';
+    src: url('./fonts/DINosaur-Light.otf') format('truetype');
 }
 
 @font-face {
-    font-family: 'TsangerXuanSan';
+    font-family: 'ENN';
+    src: url('./fonts/DINosaur-Book.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ENB';
+    src: url('./fonts/DINosaur-Medium.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CNL';
     src: url('./fonts/TsangerXuanSan01-W02.ttf') format('truetype');
-    font-weight: 200;
 }
 
 @font-face {
-    font-family: 'TsangerXuanSan';
+    font-family: 'CNN';
     src: url('./fonts/TsangerXuanSan01-W03.ttf') format('truetype');
-    font-weight: 400;
 }
 
 @font-face {
-    font-family: 'TsangerXuanSan';
+    font-family: 'CNB';
     src: url('./fonts/TsangerXuanSan01-W04.ttf') format('truetype');
-    font-weight: 600;
 }
 
 body {
