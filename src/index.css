@@ -1,13 +1,34 @@
+@font-face {
+    font-family: 'DINosaur';
+    src: url('./fonts/DINosaur.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TsangerXuanSan';
+    src: url('./fonts/TsangerXuanSan01-W02.ttf') format('truetype');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'TsangerXuanSan';
+    src: url('./fonts/TsangerXuanSan01-W03.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'TsangerXuanSan';
+    src: url('./fonts/TsangerXuanSan01-W04.ttf') format('truetype');
+    font-weight: 600;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

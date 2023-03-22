@@ -12,15 +12,7 @@ function App() {
 
     const theme = createTheme({
         typography: {
-            fontFamily: `DINosaur, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'`,
-            fontWeightBold: 'normal',
-            fontWeightLight: 'normal'
-        }, overrides: {
-            MuiCssBaseline: {
-                '@global': {
-                    '@font-face': [DINosaurBook],
-                }
-            }
+            fontFamily: `DINosaur, TsangerXuanSan, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'`
         }
     })
 

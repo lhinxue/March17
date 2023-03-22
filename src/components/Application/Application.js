@@ -1,13 +1,15 @@
-import { AddBoxTwoTone, AddCircleTwoTone, AddOutlined, EditTwoTone, FindInPageTwoTone, LabelOffOutlined, LanguageTwoTone, LibraryAddTwoTone, ManageSearchOutlined, NightsStayOutlined, NotesOutlined, PlaylistAddTwoTone, PostAddOutlined, SearchOutlined, SettingsOutlined, SettingsTwoTone, TravelExploreOutlined } from "@mui/icons-material"
+import { AddBoxTwoTone, AddCircleTwoTone, AddOutlined, AutoAwesomeOutlined, AutoModeOutlined, BrowserUpdatedOutlined, DiamondOutlined, DownloadingOutlined, EditTwoTone, FileDownloadOutlined, FindInPageTwoTone, LabelOffOutlined, LanguageOutlined, LanguageTwoTone, LibraryAddTwoTone, ManageSearchOutlined, NightsStayOutlined, NotesOutlined, PlaylistAddTwoTone, PostAddOutlined, Rotate90DegreesCwOutlined, SearchOutlined, SettingsApplicationsOutlined, SettingsOutlined, SettingsTwoTone, TravelExploreOutlined } from "@mui/icons-material"
 import { Box, Button, IconButton, Tab, Tabs, ToggleButton, Typography } from "@mui/material"
 import { Fade, Flip, Slide } from "react-reveal"
 import "./Application.css"
 import { useState } from "react";
 import { useTheme } from "@emotion/react";
+import { MenuButtons } from "../../configurations/Components";
 
 
 function Application({
-    tags = ["Company", "Study", "Family"]
+    tags = ["Company", "Study", "Family"],
+    utility
 }) {
 
     const [mode, setMode] = useState("")
@@ -22,6 +24,8 @@ function Application({
         }
     }
 
+
+
     return (
         <div
             className="Application"
@@ -30,76 +34,23 @@ function Application({
             <div className="Header" style={{
                 borderColor: theme.palette.secondary.light
             }} >
-                <Fade>
-                    <h1 className="Right">
+
+                <Typography component={'div'} className="Left" color={"secondary"}
+                    onClick={() => { }}
+                >
+                    <Fade>
                         <img src="./march7th.jpg" style={{
                             borderColor: theme.palette.secondary.main
                         }} />
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="202.93 50.57 519.58 187.46" fill={theme.palette.secondary.light}>
-                            <path class="cls-1" transform="translate(180)"
-                                d="M27.36,75.24c6.09.09,12,2.51,19.2,1.44,17.43-2.58,43.94-1.3,58.8,2.16.71,1.69,1.62,2.74,1.2,5C103.86,87.29,93,85.8,87.12,85.8L43,86.28c-6.24,0-14.32,1.32-18.24-1.44-.8-2.72-.2-5.89.48-8.4Z" />
-                            <path class="cls-1" transform="translate(180)"
-                                d="M28.56,135.48l49.44.24c9.93,0,21.83-.73,29.52,2.16.63,1.6,2,3.78.48,5.52-1.78,3.25-13.88,1.68-18.72,1.68l-61.68-.24c-3.57-1.61-2.13-6.6-.48-9.12Z" />
-                            <path class="cls-1" transform="translate(180)"
-                                d="M25.44,195.24c11.53.31,24.26.72,36.72.72l25.2.48c9.64,1.51,20.78-.77,27.36,3.6,0,8.55-10.42,7.47-18.48,6.24l-27.36-.72-21.6-.24c-5.13.75-19.86,1.42-23.52-.72C22.05,200.56,23.18,198.23,25.44,195.24Z" />
-                            <path class="cls-1" transform="translate(120)"
-                                d="M282,82.92l1.44.24c2.63,1.33,14.48,25,13.44,29.28-.25,1.79-1,2.11-1.92,3.12l-2.88-.24c-2.36-1.16-2.75-4.75-4.08-7C284.44,102.45,273.68,90.84,282,82.92Z" />
-                            <path class="cls-1" transform="translate(120)"
-                                d="M299.76,56.52c7.25,0,8.83,7.14,11.52,11.76,7,11.9,13.29,34.17,8.4,53.52-1.63,6.45-6.78,6.24-12.48,8.64-7.63,3.21-14.13,7.88-20.16,12.72-18.09,14.52-27.7,39-35.52,63.84-1.53,4.84-7.39,23-12.48,21.6l-1.92-.72c-.75-7.32,3.07-16.89,5-23.28,6.41-20.86,15.08-41.43,28.56-55.44-2.47-19.38-12.24-30.75-21.6-43l-.48.24a100.13,100.13,0,0,1-13.2,26.64c-1.26,1.76-4,7-6.24,6.72l-1.68-.72c-2.17-8.31,6.52-24.65,9.84-30.24,10.37-17.49,22.16-32.6,39.6-43Z M296.64,71.4l-7.2,1.2a49.47,49.47,0,0,0-12.24,4.8c-9,5.3-14.49,12.77-22.08,19.2l2.64,2.64,6.72,9.12a118.11,118.11,0,0,1,13.92,31.2c4.48-3.29,7.85-8,12.48-11.28,7.38-5.24,17.7-7.37,20.64-17,2.81-9.23-3.49-31.57-7.44-37C302.62,72.28,300.13,71.4,296.64,71.4Z" />
-                            <path class="cls-1" transform="translate(60)"
-                                d="M473.76,122.52c11.62-.11,39.57-.88,46.32,3.36a7.54,7.54,0,0,1-5,9.36c-3,.86-7.49.19-10.32-.24h-9.36a144.16,144.16,0,0,0-20.88-1.44l1,73.68c.93,6,.92,22.43-5,20.4C465,225,468.11,212,467,204.84l-1.92-71.28L432.48,136c-2.74.42-6.89,1.37-9.6.24-2.19-.91-3.38-3.33-3.84-6-1.13-6.52,5.39-7.92,11.52-7,11.35,1.78,23-.84,34.56-.72L464.4,87l.24-14.4c1.06-7-1.11-17,5.76-18,6,4.74,4.74,12.27,4.56,22.56Z" />
-                            <path class="cls-1"
-                                d="M667.68,111.48l40.08,1c6.2,0,13.89-.12,13.2,6.48s-8,6.9-15.36,5.76l-37.92-.48c-.07,9.25-.68,19.48,2.88,25.2,5,8,21.74,3.74,27.12,11,3.91,5.3,1,18.18,2.64,25.44,3.82,16.5,10.85,28.77,19.2,40.56,2,2.8,5.35,9,.48,11.28-4.51,2.29-10.59-8.7-12.48-11.52-6.68-10-12.52-20.95-15.84-34.32-1.28-5.16-.91-21.59-3.6-25-2.13-2.67-8.45-2.65-12.24-3.6-6.92-1.74-11.58-3.84-14.16-9.84-3.13-7.27-4-19.76-4.08-29.28l-27.36.72c-3,.45-8,1.84-11,.72-2.23-.82-3.38-3.15-3.84-5.76-.61-3.46.58-7,2.4-8.16,2.77-1.76,7.55-.49,11.52-.48l28.32.24c-.28-16.46,2.16-30.32,2.16-46.08,0-5.8-.11-17.17,7-14.4,4.55,1.9,6.31,10.36,5,17.76A260.5,260.5,0,0,0,667.68,111.48Z" />
-                        </svg> */}
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="172.93 50.57 549.58 187.46" fill={theme.palette.secondary.main}>
-                            <path class="cls-1" transform="translate(150)"
-                                d="M27.36,75.24c6.09.09,12,2.51,19.2,1.44,17.43-2.58,43.94-1.3,58.8,2.16.71,1.69,1.62,2.74,1.2,5C103.86,87.29,93,85.8,87.12,85.8L43,86.28c-6.24,0-14.32,1.32-18.24-1.44-.8-2.72-.2-5.89.48-8.4Z" />
-                            <path class="cls-1" transform="translate(150)"
-                                d="M28.56,135.48l49.44.24c9.93,0,21.83-.73,29.52,2.16.63,1.6,2,3.78.48,5.52-1.78,3.25-13.88,1.68-18.72,1.68l-61.68-.24c-3.57-1.61-2.13-6.6-.48-9.12Z" />
-                            <path class="cls-1" transform="translate(150)"
-                                d="M25.44,195.24c11.53.31,24.26.72,36.72.72l25.2.48c9.64,1.51,20.78-.77,27.36,3.6,0,8.55-10.42,7.47-18.48,6.24l-27.36-.72-21.6-.24c-5.13.75-19.86,1.42-23.52-.72C22.05,200.56,23.18,198.23,25.44,195.24Z" />
-                            <path class="cls-1" transform="translate(100)"
-                                d="M282,82.92l1.44.24c2.63,1.33,14.48,25,13.44,29.28-.25,1.79-1,2.11-1.92,3.12l-2.88-.24c-2.36-1.16-2.75-4.75-4.08-7C284.44,102.45,273.68,90.84,282,82.92Z" />
-                            <path class="cls-1" transform="translate(100)"
-                                d="M299.76,56.52c7.25,0,8.83,7.14,11.52,11.76,7,11.9,13.29,34.17,8.4,53.52-1.63,6.45-6.78,6.24-12.48,8.64-7.63,3.21-14.13,7.88-20.16,12.72-18.09,14.52-27.7,39-35.52,63.84-1.53,4.84-7.39,23-12.48,21.6l-1.92-.72c-.75-7.32,3.07-16.89,5-23.28,6.41-20.86,15.08-41.43,28.56-55.44-2.47-19.38-12.24-30.75-21.6-43l-.48.24a100.13,100.13,0,0,1-13.2,26.64c-1.26,1.76-4,7-6.24,6.72l-1.68-.72c-2.17-8.31,6.52-24.65,9.84-30.24,10.37-17.49,22.16-32.6,39.6-43Z M296.64,71.4l-7.2,1.2a49.47,49.47,0,0,0-12.24,4.8c-9,5.3-14.49,12.77-22.08,19.2l2.64,2.64,6.72,9.12a118.11,118.11,0,0,1,13.92,31.2c4.48-3.29,7.85-8,12.48-11.28,7.38-5.24,17.7-7.37,20.64-17,2.81-9.23-3.49-31.57-7.44-37C302.62,72.28,300.13,71.4,296.64,71.4Z" />
-                            <path class="cls-1" transform="translate(50)"
-                                d="M473.76,122.52c11.62-.11,39.57-.88,46.32,3.36a7.54,7.54,0,0,1-5,9.36c-3,.86-7.49.19-10.32-.24h-9.36a144.16,144.16,0,0,0-20.88-1.44l1,73.68c.93,6,.92,22.43-5,20.4C465,225,468.11,212,467,204.84l-1.92-71.28L432.48,136c-2.74.42-6.89,1.37-9.6.24-2.19-.91-3.38-3.33-3.84-6-1.13-6.52,5.39-7.92,11.52-7,11.35,1.78,23-.84,34.56-.72L464.4,87l.24-14.4c1.06-7-1.11-17,5.76-18,6,4.74,4.74,12.27,4.56,22.56Z" />
-                            <path class="cls-1"
-                                d="M667.68,111.48l40.08,1c6.2,0,13.89-.12,13.2,6.48s-8,6.9-15.36,5.76l-37.92-.48c-.07,9.25-.68,19.48,2.88,25.2,5,8,21.74,3.74,27.12,11,3.91,5.3,1,18.18,2.64,25.44,3.82,16.5,10.85,28.77,19.2,40.56,2,2.8,5.35,9,.48,11.28-4.51,2.29-10.59-8.7-12.48-11.52-6.68-10-12.52-20.95-15.84-34.32-1.28-5.16-.91-21.59-3.6-25-2.13-2.67-8.45-2.65-12.24-3.6-6.92-1.74-11.58-3.84-14.16-9.84-3.13-7.27-4-19.76-4.08-29.28l-27.36.72c-3,.45-8,1.84-11,.72-2.23-.82-3.38-3.15-3.84-5.76-.61-3.46.58-7,2.4-8.16,2.77-1.76,7.55-.49,11.52-.48l28.32.24c-.28-16.46,2.16-30.32,2.16-46.08,0-5.8-.11-17.17,7-14.4,4.55,1.9,6.31,10.36,5,17.76A260.5,260.5,0,0,0,667.68,111.48Z" />
-                        </svg> */}
-                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="22.93 50.57 699.58 187.46" fill={theme.palette.secondary.light}>
-                            <path class="cls-1"
-                                d="M27.36,75.24c6.09.09,12,2.51,19.2,1.44,17.43-2.58,43.94-1.3,58.8,2.16.71,1.69,1.62,2.74,1.2,5C103.86,87.29,93,85.8,87.12,85.8L43,86.28c-6.24,0-14.32,1.32-18.24-1.44-.8-2.72-.2-5.89.48-8.4Z"
-                            />
-                            <path class="cls-1"
-                                d="M28.56,135.48l49.44.24c9.93,0,21.83-.73,29.52,2.16.63,1.6,2,3.78.48,5.52-1.78,3.25-13.88,1.68-18.72,1.68l-61.68-.24c-3.57-1.61-2.13-6.6-.48-9.12Z"
-                            />
-                            <path class="cls-1"
-                                d="M25.44,195.24c11.53.31,24.26.72,36.72.72l25.2.48c9.64,1.51,20.78-.77,27.36,3.6,0,8.55-10.42,7.47-18.48,6.24l-27.36-.72-21.6-.24c-5.13.75-19.86,1.42-23.52-.72C22.05,200.56,23.18,198.23,25.44,195.24Z"
-                            />
-                            <path class="cls-1"
-                                d="M282,82.92l1.44.24c2.63,1.33,14.48,25,13.44,29.28-.25,1.79-1,2.11-1.92,3.12l-2.88-.24c-2.36-1.16-2.75-4.75-4.08-7C284.44,102.45,273.68,90.84,282,82.92Z"
-                            />
-                            <path class="cls-1"
-                                d="M299.76,56.52c7.25,0,8.83,7.14,11.52,11.76,7,11.9,13.29,34.17,8.4,53.52-1.63,6.45-6.78,6.24-12.48,8.64-7.63,3.21-14.13,7.88-20.16,12.72-18.09,14.52-27.7,39-35.52,63.84-1.53,4.84-7.39,23-12.48,21.6l-1.92-.72c-.75-7.32,3.07-16.89,5-23.28,6.41-20.86,15.08-41.43,28.56-55.44-2.47-19.38-12.24-30.75-21.6-43l-.48.24a100.13,100.13,0,0,1-13.2,26.64c-1.26,1.76-4,7-6.24,6.72l-1.68-.72c-2.17-8.31,6.52-24.65,9.84-30.24,10.37-17.49,22.16-32.6,39.6-43Z M296.64,71.4l-7.2,1.2a49.47,49.47,0,0,0-12.24,4.8c-9,5.3-14.49,12.77-22.08,19.2l2.64,2.64,6.72,9.12a118.11,118.11,0,0,1,13.92,31.2c4.48-3.29,7.85-8,12.48-11.28,7.38-5.24,17.7-7.37,20.64-17,2.81-9.23-3.49-31.57-7.44-37C302.62,72.28,300.13,71.4,296.64,71.4Z"
-                            />
-                            <path class="cls-1"
-                                d="M473.76,122.52c11.62-.11,39.57-.88,46.32,3.36a7.54,7.54,0,0,1-5,9.36c-3,.86-7.49.19-10.32-.24h-9.36a144.16,144.16,0,0,0-20.88-1.44l1,73.68c.93,6,.92,22.43-5,20.4C465,225,468.11,212,467,204.84l-1.92-71.28L432.48,136c-2.74.42-6.89,1.37-9.6.24-2.19-.91-3.38-3.33-3.84-6-1.13-6.52,5.39-7.92,11.52-7,11.35,1.78,23-.84,34.56-.72L464.4,87l.24-14.4c1.06-7-1.11-17,5.76-18,6,4.74,4.74,12.27,4.56,22.56Z"
-                            />
-                            <path class="cls-1"
-                                d="M667.68,111.48l40.08,1c6.2,0,13.89-.12,13.2,6.48s-8,6.9-15.36,5.76l-37.92-.48c-.07,9.25-.68,19.48,2.88,25.2,5,8,21.74,3.74,27.12,11,3.91,5.3,1,18.18,2.64,25.44,3.82,16.5,10.85,28.77,19.2,40.56,2,2.8,5.35,9,.48,11.28-4.51,2.29-10.59-8.7-12.48-11.52-6.68-10-12.52-20.95-15.84-34.32-1.28-5.16-.91-21.59-3.6-25-2.13-2.67-8.45-2.65-12.24-3.6-6.92-1.74-11.58-3.84-14.16-9.84-3.13-7.27-4-19.76-4.08-29.28l-27.36.72c-3,.45-8,1.84-11,.72-2.23-.82-3.38-3.15-3.84-5.76-.61-3.46.58-7,2.4-8.16,2.77-1.76,7.55-.49,11.52-.48l28.32.24c-.28-16.46,2.16-30.32,2.16-46.08,0-5.8-.11-17.17,7-14.4,4.55,1.9,6.31,10.36,5,17.76A260.5,260.5,0,0,0,667.68,111.48Z"
-                            />
-                        </svg> */}
-
-                    </h1>
-                </Fade>
+                    </Fade>
+                    <Flip left cascade>
+                        叁月拾柒
+                    </Flip>
+                </Typography>
                 <Fade>
-                    <div className="Left">
+                    <div className="Right">
                         <IconButton size="small" color="secondary">
-                            <TravelExploreOutlined fontSize="small" />
-                        </IconButton>
-                        <IconButton size="small" color="secondary">
-                            <SettingsOutlined fontSize="small" />
+                            <DownloadingOutlined fontSize="small" sx={{ transform: "scaleX(-1)" }} />
                         </IconButton>
                     </div>
                 </Fade>
@@ -108,49 +59,25 @@ function Application({
             </div>
 
             <div className="Content">
-                <div
-                    className="Tags"
-
-                >
-                    <Button
-                        selected={mode === "Search"}
-                        color={"secondary"}
-                        fullWidth
-                        onClick={() => setMode("Search")}
-                        sx={{ padding: "12px 16px", background: mode === "Search" ? theme.palette.secondary.light + "55 !important" : theme.palette.secondary.light + "11 !important" }}
-                    >
-                        <TravelExploreOutlined fontSize="small" />
-                        <Flip left cascade>
-                            Search
-                        </Flip>
-                    </Button>
-                    <Button
-                        selected={mode === "AllNotes"}
-                        color={"error"}
-                        fullWidth
-                        onClick={() => setMode("AllNotes")}
-                        sx={{ padding: "12px 16px", background: mode === "AllNotes" ? theme.palette.error.light + "55 !important" : theme.palette.error.light + "11 !important" }}
-                    >
-                        <NotesOutlined fontSize="small" />
-                        <Flip left cascade>
-                            All
-                        </Flip>
-                    </Button>
-                    <Button
-                        selected={mode === "NoTag"}
-                        color={"warning"}
-                        fullWidth
-                        onClick={() => setMode("NoTag")}
-                        sx={{ padding: "12px 16px", background: mode === "NoTag" ? theme.palette.warning.light + "55 !important" : theme.palette.warning.light + "11 !important" }}
-                    >
-                        <LabelOffOutlined fontSize="small" />
-                        <Flip left cascade>
-                            Untagged
-                        </Flip>
-                    </Button>
-
+                <div className="Tags">
+                    {
+                        MenuButtons.map(
+                            (v) =>
+                                <Button
+                                    selected={mode === v.key}
+                                    color={v.color}
+                                    fullWidth
+                                    onClick={() => setMode(v.key)}
+                                    sx={{ background: mode === v.key ? theme.palette[v.color].light + "55 !important" : theme.palette[v.color].light + "11 !important" }}
+                                >
+                                    {v.icon}
+                                    <Flip left cascade>
+                                        {v.key}
+                                    </Flip>
+                                </Button>
+                        )
+                    }
                     <Tabs
-
                         orientation="vertical"
                         variant="scrollable"
                         scrollButtons={false}
@@ -171,17 +98,11 @@ function Application({
                                 className="Tag"
                                 value={tag}
                                 key={tag}
-                                label={
-                                    <Flip left cascade>
-                                        {tag}
-                                    </Flip>
-                                }
+                                label={<Flip left cascade>{tag}</Flip>}
                             />
                         )}
                     </Tabs>
                 </div>
-
-
                 <div>
 
                 </div>
@@ -193,4 +114,6 @@ function Application({
         </div >
     )
 }
+
+
 export default Application

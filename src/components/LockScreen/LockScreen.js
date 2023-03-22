@@ -59,7 +59,7 @@ function LockScreen({ open, utility }) {
                             className='Input'
                             focused
                             fullWidth
-                            value={fileName === "" ? "Drag or Upload File" : fileName}
+                            value={fileName === "" ? "March 7th Drag or Upload File" : fileName}
                             variant='outlined'
                             InputProps={{
                                 endAdornment: (
@@ -88,7 +88,7 @@ function LockScreen({ open, utility }) {
                             <Fade delay={300}>
                                 <Typography className="CreateNew" fontSize={12} component="label" color={"primary"}>
                                     or <u onClick={() => { }}>
-                                        <em>Create New</em>
+                                        Create New
                                     </u>
                                 </Typography>
                             </Fade>
