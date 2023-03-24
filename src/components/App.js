@@ -1,68 +1,18 @@
 
 import { Button, createTheme, ThemeProvider } from '@mui/material';
 import LockScreen from './LockScreen/LockScreen';
-import Messenger from './Messenger/Messenger';
+import Messenger, { DEFAULT_MESSENGER } from './Messenger/Messenger';
 import { useState } from 'react';
 import Application from './Application/Application';
 import Fonts from './Fonts/Fonts';
+import { MATERIAL_THEME } from '../configurations/Component';
 
 
 function App() {
 
-    const theme = createTheme({
-        palette: {
-            mode: 'light',
-            primary: {
-                main: '#e944df',
-                contrastText: '#ffffff',
-                light: '#ff8efd',
-                dark: '#a42da0',
-            },
-            secondary: {
-                main: '#448ce9',
-                contrastText: '#ffffff',
-                light: '#8ec4ff',
-                dark: '#2d64a4',
-            },
-            red: {
-                main: '#e9444a',
-                contrastText: '#ffffff',
-                light: '#ff8e97',
-                dark: '#a42d34',
-            },
-            orange: {
-                main: '#e98b44',
-                contrastText: '#ffffff',
-                light: '#ffb98e',
-                dark: '#a45d2d',
-            },
-            blue: {
-                main: '#5144e9',
-                contrastText: '#ffffff',
-                light: '#918eff',
-                dark: '#332da4',
-            },
-            info: {
-                main: '#767676',
-                contrastText: '#ffffff',
-                light: '#a6a6a6',
-                dark: '#484848',
-            },
-        },
-        typography: {
-            fontWeightLight: 400,
-            fontWeightMedium: 400,
-            fontWeightBold: 400,
-            fontFamily: `ENN, CNN, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'`
-        }
-    })
+    const theme = createTheme(MATERIAL_THEME)
 
-    const [messengerControl, setMessengerControl] = useState({
-        open: false,
-        severity: 0,
-        title: "",
-        text: ""
-    })
+    const [messengerControl, setMessengerControl] = useState(DEFAULT_MESSENGER)
 
     const [fontLoaded, setFontLoaded] = useState(false)
 

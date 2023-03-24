@@ -33,4 +33,14 @@ function Messenger({
     )
 }
 
+const DEFAULT_MESSENGER = {
+    open: false,
+    severity: 0,
+    title: "",
+    text: ""
+}
+
 export default Messenger
+export {
+    DEFAULT_MESSENGER
+}

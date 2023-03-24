@@ -1,17 +1,16 @@
 import { AddBoxTwoTone, AddCircleTwoTone, AddOutlined, AutoAwesomeOutlined, AutoModeOutlined, BrowserUpdatedOutlined, DiamondOutlined, DownloadingOutlined, EditTwoTone, FileDownloadOutlined, FindInPageTwoTone, LabelOffOutlined, LanguageOutlined, LanguageTwoTone, LibraryAddTwoTone, ManageSearchOutlined, NightsStayOutlined, NotesOutlined, PlaylistAddTwoTone, PostAddOutlined, Rotate90DegreesCwOutlined, SearchOutlined, SettingsApplicationsOutlined, SettingsOutlined, SettingsTwoTone, TravelExploreOutlined } from "@mui/icons-material"
-import { Box, Button, IconButton, Tab, Tabs, ToggleButton, Typography } from "@mui/material"
-import { Fade, Flip, Slide } from "react-reveal"
+import { Box, Button, IconButton, Paper, Tab, Tabs, ToggleButton, Typography } from "@mui/material"
+import { Fade, Flip, Slide, Zoom } from "react-reveal"
 import "./Application.css"
-import { useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTheme } from "@emotion/react";
-import { MenuButtons } from "../../configurations/Components";
-import March7th from './src/img/March7th.jpg'
-
+import { MenuButtons } from "../../configurations/Component";
+import Logo from "../Logo/Logo";
+import Masonry from "./src/Masonry";
 function Application({
     tags = ["Company", "Study", "Family"],
     utility
 }) {
-
     const [mode, setMode] = useState("")
     const theme = useTheme()
 
@@ -24,28 +23,45 @@ function Application({
         }
     }
 
+    const [logoActive, setLogoActive] = useState(false)
+
+    const settingColumns = useCallback(() => {
+        if (window.innerWidth >= 1400) return 4
+        if (window.innerWidth >= 800) return 3
+        if (window.innerWidth >= 500) return 2
+        return 1
+    }, [])
+
+    const [column, setColumn] = useState(() => settingColumns())
+
+    useEffect(() => {
+        window.addEventListener('resize', () => setColumn(() => settingColumns()))
+
+        return window.removeEventListener('resize', () => setColumn(() => settingColumns()))
+    }, [setColumn, settingColumns])
+
 
 
     return (
         <div
             className="Application"
         >
-
             <div className="Header" style={{
                 borderColor: theme.palette.primary.light
             }} >
-
                 <Typography component={'div'} className="Left" color={"primary"}
                     onClick={() => { }}
+                    onMouseEnter={() => setLogoActive(true)}
+                    onMouseLeave={() => setLogoActive(false)}
                 >
                     <Fade>
-                        <img src={March7th} alt="" style={{
-                            borderColor: theme.palette.primary.main
-                        }} />
+                        <Logo />
                     </Fade>
-                    <Flip left cascade>
-                        叁月拾柒
-                    </Flip>
+                    <div>
+                        <Fade>
+                            MARCH 7TH
+                        </Fade>
+                    </div>
                 </Typography>
                 <Fade>
                     <div className="Right">
@@ -54,21 +70,21 @@ function Application({
                         </IconButton>
                     </div>
                 </Fade>
-
-
             </div>
-
             <div className="Content">
                 <div className="Tags">
                     {
                         MenuButtons.map(
                             (v) =>
                                 <Button
-                                    selected={mode === v.key}
-                                    color={v.color}
+                                    color={mode === v.key ? "secondary" : "primary"}
                                     fullWidth
                                     onClick={() => setMode(v.key)}
-                                    sx={{ background: mode === v.key ? theme.palette[v.color].light + "55 !important" : theme.palette[v.color].light + "11 !important" }}
+                                    sx={{
+                                        background: mode === v.key ?
+                                            theme.palette.secondary.light + "55 !important" :
+                                            theme.palette.primary.light + "11 !important"
+                                    }}
                                 >
                                     {v.icon}
                                     <Flip left cascade>
@@ -89,7 +105,7 @@ function Application({
                                 display: 'none'
                             },
                             "& .Tag.Mui-selected": {
-                                background: theme.palette.secondary.light + "11"
+                                background: theme.palette.secondary.light + "22"
                             }
                         }}
                     >
@@ -103,21 +119,21 @@ function Application({
                         )}
                     </Tabs>
                 </div>
-                <div>
-
-                    <Typography>
-                        <strong>Marhs三月</strong>七号liuliuliu
-                    </Typography>
-
-                </div>
+                <Masonry />
             </div>
-
-
-
-
-        </div >
+        </div>
     )
 }
+
+
+const Document = memo(({ value }) => {
+    <div className="Document">
+        {
+            Array.from(Array(value).keys()).map(() => <p>pupuoio</p>)
+        }
+    </div>
+})
+
 
 
 export default Application
